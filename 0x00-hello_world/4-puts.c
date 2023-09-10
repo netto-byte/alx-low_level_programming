@@ -2,7 +2,7 @@
 
 /**
  * main - prints a string
- * 
+ *
  * Return: Always 0 (success)
  */
 
