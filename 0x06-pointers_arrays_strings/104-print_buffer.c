@@ -2,47 +2,77 @@
 #include <stdio.h>
 
 /**
- * infinite_add - adds two numbers
- * @n1: number one.
- * @n2: number two.
- * @r: buffer that the function will use to store the result.
- * @size_r: buffer size:
- * Return: the pointer to dest.
+ * isPrintableASCII - determines if n is a printable ASCII char
+ * @n: integer
+ * Return: 1 if true, 0 if false
  */
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+int isPrintableASCII(int n)
 {
-	int i, j, k, l, m, n;
+	return (n >= 32 && n <= 126);
+}
 
-	for (i = 0; n1[i]; i++)
-		;
-	for (j = 0; n2[j]; j++)
-		;
-	if (i > size_r || j > size_r)
-		return (0);
-	m = 0;
-	for (i -= 1, j -= 1, k = 0; k < size_r - 1; i--, j--, k++)
+/**
+ * printHexes - print hex values for string b in formatted form
+ * @b: string to print
+ * @start: starting position
+ * @end: ending position
+ */
+void printHexes(char *b, int start, int end)
+{
+	int i = 0;
+
+	while (i < 10)
 	{
-		n = m;
-		if (i >= 0)
-			n += n1[i] - '0';
-		if (j >= 0)
-			n += n2[j] - '0';
-		if (i < 0 && j < 0 && n == 0)
+		if (i < end)
+			printf("%02x", *(b + start + i));
+		else
+			printf("  ");
+		if (i % 2)
+			printf(" ");
+		i++;
+	}
+}
+
+/**
+ * printASCII - print ascii values for string b,
+ * formatted to replace nonprintable chars with '.'
+ * @b: string to print
+ * @start: starting position
+ * @end: ending position
+ */
+void printASCII(char *b, int start, int end)
+{
+	int ch, i = 0;
+
+	while (i < end)
+	{
+		ch = *(b + i + start);
+		if (!isPrintableASCII(ch))
+			ch = 46;
+		printf("%c", ch);
+		i++;
+	}
+}
+
+/**
+ * print_buffer - prints a buffer
+ * @b: string
+ * @size: size of buffer
+ */
+void print_buffer(char *b, int size)
+{
+	int start, end;
+
+	if (size > 0)
+	{
+		for (start = 0; start < size; start += 10)
 		{
-			break;
+			end = (size - start < 10) ? size - start : 10;
+			printf("%08x: ", start);
+			printHexes(b, start, end);
+			printASCII(b, start, end);
+			printf("\n");
 		}
-		m = n / 10;
-		r[k] = n % 10 + '0';
-	}
-	r[k] = '\0';
-	if (i >= 0 || j >= 0 || m)
-		return (0);
-	for (k -= 1, l = 0; l < k; k--, l++)
-	{
-		m = r[k];
-		r[k] = r[l];
-		r[l] = m;
-	}
-	return (r);
-
+	} else
+		printf("\n");
 }
