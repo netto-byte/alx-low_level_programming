@@ -3,7 +3,7 @@
 /**
  * sum_listint - Returns the sum of all the data (n)
  * of a listint_t linked list.
- * @heada: A listint_t list.
+ * @head: A listint_t list.
  *
  * Return: Sum of all (n) values of a listint_t.
  */
