@@ -1,18 +1,13 @@
-#ifndef MAIN_H_
-#define MAIN_H_
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
-/* System headers */
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+unsigned int binary_to_uint(const char *b);
+int _putchar(char c);
+void print_binary(unsigned long int n);
+int get_bit(unsigned long int n, unsigned int index);
+int set_bit(unsigned long int *n, unsigned int index);
+int clear_bit(unsigned long int *n, unsigned int index);
+unsigned int flip_bits(unsigned long int n, unsigned long int m);
+int get_endianness(void);
 
-
-/* Alias */
-typedef unsigned int u_int;
-
-/* Prototypes */
-int power(u_int power);
-int binary_to_uint(const char *binary);
-char *reverse_string(const char *str);
-
-#endif /* MAIN_H_ */
+#endif /* _MAIN_H_ */
