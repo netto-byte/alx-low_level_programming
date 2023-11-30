@@ -2,7 +2,7 @@
 
 /**
  * print_all - Prints anything.
- * @format: List of types of arguments passed.
+ * @format: List of types of arguments passed
  *
  * Return: void.
  */
