@@ -3,6 +3,7 @@
 /**
  * print_numbers - Prints numbers passed as parameters,
  * followed by a new line
+ * @seperator: String to print between numbers.
  * @n: Number of parametes to be passed.
  *
  * Return: void.
