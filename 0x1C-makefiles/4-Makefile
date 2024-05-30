@@ -15,4 +15,4 @@ oclean:
 	${RM} ${OBJ}
 
 fclean: oclean clean
-rm: fclean all
+re: fclean all
